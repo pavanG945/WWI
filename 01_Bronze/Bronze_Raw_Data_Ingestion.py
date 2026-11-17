@@ -55,9 +55,13 @@ spark.sql("SHOW TABLES IN wwi.bronze").show(50, truncate=False)
 # ==========================================
 
 # AWS Configuration
+# Credentials are read from Databricks Secrets, never hardcoded.
+# Set up with: databricks secrets create-scope wwi-capstone
+#              databricks secrets put-secret wwi-capstone aws-access-key
+#              databricks secrets put-secret wwi-capstone aws-secret-key
 AWS_REGION = "ap-south-1"
-AWS_ACCESS_KEY = "REDACTED_AWS_ACCESS_KEY"
-AWS_SECRET_KEY = "REDACTED_AWS_SECRET_KEY"
+AWS_ACCESS_KEY = dbutils.secrets.get(scope="wwi-capstone", key="aws-access-key")
+AWS_SECRET_KEY = dbutils.secrets.get(scope="wwi-capstone", key="aws-secret-key")
 
 # S3 Configuration
 BUCKET_NAME = "wwi-capstone-pavan-2026"

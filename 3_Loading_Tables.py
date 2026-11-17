@@ -25,9 +25,10 @@ spark.sql("USE SCHEMA bronze")
 
 # COMMAND ----------
 
-AWS_ACCESS_KEY="REDACTED_AWS_ACCESS_KEY"
+# Credentials are read from Databricks Secrets, never hardcoded.
+AWS_ACCESS_KEY = dbutils.secrets.get(scope="wwi-capstone", key="aws-access-key")
 
-AWS_SECRET_KEY="REDACTED_AWS_SECRET_KEY"
+AWS_SECRET_KEY = dbutils.secrets.get(scope="wwi-capstone", key="aws-secret-key")
 
 AWS_REGION="ap-south-1"
 
