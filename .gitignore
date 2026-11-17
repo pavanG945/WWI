@@ -1,0 +1,8 @@
+# Secrets and credentials -- never commit these
+*.pem
+*.key
+.databrickscfg
+
+# OS noise
+.DS_Store
+Thumbs.db
